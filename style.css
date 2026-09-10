@@ -1,0 +1,51 @@
+*{box-sizing:border-box}
+:root{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body{margin:0;min-height:100vh;background:#070b14;color:#f5f7ff;overflow:hidden}
+button{font:inherit}
+.hidden{display:none!important}
+#bootScreen{height:100vh;display:grid;place-items:center;background:radial-gradient(circle at center,#18233b 0,#070b14 55%,#03050a 100%)}
+.boot-box{text-align:center;width:min(430px,88vw);padding:35px;border:1px solid #35415d;border-radius:24px;background:rgba(10,15,28,.82);box-shadow:0 25px 80px rgba(0,0,0,.45)}
+.logo{font-size:58px}.boot-box h1{letter-spacing:5px;margin:8px 0}.boot-box p{color:#aeb9d1}
+.progress{height:8px;background:#202a3e;border-radius:20px;overflow:hidden;margin:25px 0 12px}
+.progress span{display:block;height:100%;width:0;background:#fff;border-radius:20px;transition:width .15s}
+#desktop{min-height:100vh;background:linear-gradient(135deg,#101a2c,#080c16 55%,#17213a)}
+.topbar{height:46px;padding:0 18px;display:flex;justify-content:space-between;align-items:center;background:rgba(0,0,0,.35);backdrop-filter:blur(12px);font-size:13px}
+.desktop-area{padding:45px 7vw}
+.welcome{max-width:800px;padding:30px;border:1px solid #33405c;border-radius:25px;background:rgba(255,255,255,.055);box-shadow:0 20px 60px rgba(0,0,0,.2)}
+.welcome h1{font-size:clamp(30px,5vw,58px);margin:8px 0 12px;line-height:1.02}
+.welcome p{color:#c1cbe0}.small{font-size:11px;letter-spacing:3px!important;color:#8e9bb5!important}
+.icons{display:flex;flex-wrap:wrap;gap:18px;margin-top:35px}
+.app{width:120px;min-height:110px;border:1px solid #34415c;border-radius:20px;background:rgba(255,255,255,.06);color:#fff;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;transition:.2s}
+.app:hover{transform:translateY(-5px);background:rgba(255,255,255,.11)}
+.app:first-line{font-size:32px}.app b{font-size:13px}
+.dock{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);padding:10px 14px;border:1px solid #34415c;border-radius:22px;background:rgba(5,8,15,.72);backdrop-filter:blur(15px);display:flex;gap:12px}
+.dock button{width:48px;height:48px;border:0;border-radius:15px;background:#172136;color:#fff;font-size:22px;cursor:pointer}
+#overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);backdrop-filter:blur(6px);display:grid;place-items:center;padding:20px}
+.window{width:min(850px,96vw);max-height:88vh;overflow:auto;border:1px solid #3c4963;border-radius:24px;background:#0d1422;box-shadow:0 30px 100px #000}
+.window-head{position:sticky;top:0;display:flex;justify-content:space-between;padding:15px 18px;background:#121b2c;border-bottom:1px solid #303b53}
+.window-head button{border:0;background:transparent;color:#fff;cursor:pointer}
+#windowContent{padding:24px}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
+.gallery img{width:100%;height:270px;object-fit:cover;border-radius:17px;border:1px solid #35415b;cursor:pointer;transition:.2s}
+.gallery img:hover{transform:scale(1.02)}
+.card{padding:25px;border:1px solid #34415c;border-radius:20px;background:rgba(255,255,255,.04);line-height:1.7}
+.big{font-size:clamp(28px,5vw,55px);margin:10px 0}
+.terminal{background:#05070c;border-radius:16px;padding:20px;color:#d7e3ff;font-family:monospace;line-height:1.8}
+.terminal span{color:#8ff0a8}
+.reveal{display:grid;place-items:center;text-align:center;min-height:360px}
+.reveal button{border:1px solid #4a5875;background:#18233a;color:#fff;padding:14px 22px;border-radius:14px;cursor:pointer}
+#secret{display:none;margin-top:25px}
+@media(max-width:600px){.desktop-area{padding:25px 5vw}.welcome{padding:22px}.app{width:calc(50% - 9px)}.gallery img{height:230px}}
+
+.countdown-card{margin-top:22px;padding:18px 20px;border:1px solid #3b4965;border-radius:18px;background:rgba(255,255,255,.045);max-width:520px}
+.count-label{font-size:10px;letter-spacing:3px;color:#8e9bb5;margin-bottom:8px}
+#countdown{font-size:clamp(20px,4vw,34px);font-weight:700;letter-spacing:1px}
+
+.message-card{margin-top:18px;padding:22px;border:1px solid #43516d;border-radius:20px;background:rgba(255,255,255,.045);text-align:left;line-height:1.8;white-space:pre-line;box-shadow:0 15px 45px rgba(0,0,0,.22)}
+#typedMessage{min-height:100px}
+.message-end{display:none;margin-top:22px;text-align:center;font-size:22px;font-weight:700;animation:fadeIn .8s ease}
+.message-end span{font-size:15px;color:#b8c4da}
+.hearts{text-align:center;font-size:25px;letter-spacing:8px;margin-top:16px}
+.floating-heart{position:fixed;top:-40px;z-index:9998;font-size:22px;pointer-events:none;animation:heartFall linear forwards}
+@keyframes heartFall{to{transform:translateY(110vh) rotate(360deg);opacity:.1}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}

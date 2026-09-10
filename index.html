@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reshma OS — Birthday Edition</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="bootScreen">
+  <div class="boot-box">
+    <div class="logo">🎂</div>
+    <h1>RESHMA OS</h1>
+    <p>Birthday Edition v19.0</p>
+    <div class="progress"><span id="progressBar"></span></div>
+    <p id="bootText">Initializing birthday system...</p>
+  </div>
+</div>
+
+<div id="desktop" class="hidden">
+  <header class="topbar">
+    <span>🎂 RESHMA OS</span>
+    <span id="clock"></span>
+  </header>
+
+  <main class="desktop-area">
+    <section class="welcome">
+      <p class="small">SYSTEM MESSAGE</p>
+      <h1>Happy 19th Birthday, Reshma! 🎉</h1>
+      <p>From Abishek 💙 — un friend-kaga oru small digital surprise.</p>
+      <div class="countdown-card">
+        <div class="count-label">BIRTHDAY COUNTDOWN</div>
+        <div id="countdown">Loading...</div>
+      </div>
+    </section>
+
+    <div class="icons">
+      <button class="app" onclick="openApp('memories')">📸<b>Memories</b></button>
+      <button class="app" onclick="openApp('message')">💌<b>Birthday Message</b></button>
+      <button class="app" onclick="openApp('surprise')">🎁<b>Surprise</b></button>
+      <button class="app" onclick="openApp('terminal')">💻<b>Terminal</b></button>
+      <button class="app" onclick="openApp('about')">🎂<b>Birthday Info</b></button>
+    </div>
+  </main>
+
+  <footer class="dock">
+    <button onclick="openApp('memories')">📸</button>
+    <button onclick="openApp('message')">💌</button>
+    <button onclick="openApp('surprise')">🎁</button>
+    <button onclick="openApp('terminal')">💻</button>
+  </footer>
+</div>
+
+<div id="overlay" class="hidden" onclick="closeOutside(event)">
+  <div class="window">
+    <div class="window-head">
+      <span id="windowTitle">App</span>
+      <button onclick="closeApp()">✕</button>
+    </div>
+    <div id="windowContent"></div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+
+<div id="musicPlayer" style="position:fixed;left:12px;bottom:12px;z-index:9999;
+background:rgba(0,0,0,.75);padding:8px 10px;border-radius:14px;backdrop-filter:blur(8px);">
+  <audio id="birthdayAudio" controls loop preload="metadata">
+    <source src="music/birthday-song.mp4" type="audio/mp4">
+  </audio>
+</div>
+
+</body>
+</html>
