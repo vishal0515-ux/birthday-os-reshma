@@ -69,6 +69,38 @@ background:rgba(0,0,0,.75);padding:8px 10px;border-radius:14px;backdrop-filter:b
     <source src="music/birthday-song.mp4" type="audio/mp4">
   </audio>
 </div>
+<div id="loginScreen" style="position:fixed;inset:0;z-index:99999;background:#050510;color:white;display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;">
+  <div style="text-align:center;width:90%;max-width:350px;">
+    <h1>🔐 BIRTHDAY OS</h1>
+    <p>Enter password to continue</p>
 
+    <input id="sitePassword"
+           type="password"
+           placeholder="Password"
+           style="width:100%;padding:14px;border-radius:10px;border:1px solid #555;background:#111;color:white;box-sizing:border-box;">
+
+    <button onclick="loginSite()"
+            style="margin-top:12px;padding:12px 25px;border:0;border-radius:10px;cursor:pointer;">
+      LOGIN
+    </button>
+
+    <p id="loginError" style="color:#ff6b6b;"></p>
+  </div>
+</div>
+
+<script>
+function loginSite() {
+  const password = document.getElementById("sitePassword").value;
+
+  if (password === "abima") {
+    document.getElementById("loginScreen").style.display = "none";
+  } else {
+    document.getElementById("loginError").textContent = "❌ Wrong password";
+  }
+}
+</script>
+
+</body>
+</html>
 </body>
 </html>
