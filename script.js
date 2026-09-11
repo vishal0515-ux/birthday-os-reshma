@@ -4,7 +4,7 @@
 
 /* ---------- CONFIG ---------- */
 
-const surprisePassword = "dolly";
+const surprisePassword = "bestie";
 
 const photos = [
     "photos/photo1.jpeg",
