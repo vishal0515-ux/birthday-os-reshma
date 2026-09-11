@@ -1,466 +1,576 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Reshma OS — Birthday Edition</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
 
-<style>
-/* ================= PASSWORD SCREEN ================= */
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
 
-#loginScreen {
-  position: fixed;
-  inset: 0;
-  z-index: 99999;
-  background: #050510;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: Arial, sans-serif;
-}
+    <title>Reshma OS — Birthday Edition</title>
 
-.login-box {
-  width: 88%;
-  max-width: 360px;
-  text-align: center;
-  padding: 30px 22px;
-  border-radius: 22px;
-  background: rgba(20,20,35,0.95);
-  box-shadow: 0 0 35px rgba(255,255,255,0.15);
-}
+    <link rel="stylesheet" href="style.css">
 
-.login-box .login-logo {
-  font-size: 55px;
-  margin-bottom: 10px;
-}
+    <style>
+        /* =========================
+           LOGIN SCREEN
+        ========================= */
 
-.login-box h1 {
-  margin: 5px 0;
-}
+        #loginScreen {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
 
-.login-box p {
-  color: #bbb;
-}
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-#sitePassword {
-  width: 100%;
-  padding: 14px;
-  margin-top: 15px;
-  box-sizing: border-box;
-  border-radius: 12px;
-  border: 1px solid #555;
-  background: #0d0d18;
-  color: white;
-  font-size: 16px;
-  outline: none;
-}
+            padding: 20px;
 
-#loginButton {
-  width: 100%;
-  margin-top: 12px;
-  padding: 14px;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
-}
+            background:
+                linear-gradient(
+                    rgba(0, 255, 100, 0.04) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(0, 255, 100, 0.04) 1px,
+                    transparent 1px
+                ),
+                radial-gradient(
+                    circle at center,
+                    rgba(0, 255, 100, 0.08),
+                    transparent 45%
+                ),
+                #020806;
 
-#loginError {
-  color: #ff6b6b;
-  min-height: 20px;
-}
+            background-size:
+                40px 40px,
+                40px 40px,
+                100% 100%;
+        }
 
-/* ================= MUSIC BOX ================= */
+        .login-box {
+            width: min(420px, 92vw);
 
-#musicBox {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 99998;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0,0,0,0.82);
-  padding: 20px;
-  box-sizing: border-box;
-}
+            padding: 32px 26px;
 
-.music-window {
-  width: 90%;
-  max-width: 380px;
-  background: #11111d;
-  color: white;
-  padding: 28px 22px;
-  border-radius: 22px;
-  text-align: center;
-  box-shadow: 0 0 40px rgba(255,255,255,0.15);
-  position: relative;
-}
+            text-align: center;
 
-.music-icon {
-  font-size: 60px;
-  margin-bottom: 10px;
-}
+            background: rgba(0, 12, 6, 0.94);
 
-.music-window h2 {
-  margin: 5px 0;
-}
+            border: 1px solid #20ff76;
 
-.music-window p {
-  color: #bbb;
-}
+            border-radius: 16px;
 
-.music-window audio {
-  width: 100%;
-  margin-top: 20px;
-}
+            box-shadow:
+                0 0 12px rgba(0, 255, 100, 0.3),
+                0 0 45px rgba(0, 255, 100, 0.08);
+        }
 
-.music-close {
-  position: absolute;
-  right: 12px;
-  top: 10px;
-  border: none;
-  background: transparent;
-  color: white;
-  font-size: 22px;
-  cursor: pointer;
-}
+        .login-logo {
+            font-size: 52px;
+            margin-bottom: 8px;
 
-/* Mobile */
-@media (max-width: 600px) {
-  .login-box {
-    padding: 25px 18px;
-  }
+            filter:
+                drop-shadow(0 0 10px rgba(0, 255, 100, 0.35));
+        }
 
-  .music-window {
-    width: 92%;
-  }
-}
-</style>
+        .login-box h1 {
+            margin: 5px 0;
+
+            color: #43ff91;
+
+            font-family: "Courier New", monospace;
+
+            font-size: 28px;
+
+            text-shadow:
+                0 0 8px #00ff66,
+                0 0 18px rgba(0, 255, 100, 0.45);
+        }
+
+        .login-subtitle {
+            margin: 8px 0 25px;
+
+            color: #73b98c;
+
+            font-size: 13px;
+
+            letter-spacing: 1px;
+        }
+
+        .login-label {
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: #52ff98;
+
+            text-align: left;
+
+            font-size: 12px;
+
+            letter-spacing: 2px;
+        }
+
+        #passwordInput {
+            width: 100%;
+
+            padding: 14px;
+
+            outline: none;
+
+            background: #000a05;
+
+            color: #63ffa1;
+
+            border: 1px solid #145d32;
+
+            border-radius: 8px;
+
+            font-family: "Courier New", monospace;
+
+            font-size: 16px;
+
+            text-align: center;
+        }
+
+        #passwordInput:focus {
+            border-color: #20ff76;
+
+            box-shadow:
+                0 0 12px rgba(0, 255, 100, 0.2);
+        }
+
+        .password-hint {
+            margin: 10px 0 18px;
+
+            color: #62d991;
+
+            font-size: 11px;
+
+            line-height: 1.5;
+
+            opacity: 0.85;
+        }
+
+        #loginButton {
+            width: 100%;
+
+            padding: 13px;
+
+            background: #031a0d;
+
+            color: #4dff95;
+
+            border: 1px solid #20ff76;
+
+            border-radius: 8px;
+
+            font-family: "Courier New", monospace;
+
+            font-size: 15px;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        #loginButton:hover {
+            background: #063d1d;
+
+            box-shadow:
+                0 0 15px rgba(0, 255, 100, 0.3);
+        }
+
+        #loginError {
+            min-height: 18px;
+
+            margin-top: 12px;
+
+            color: #ff7373;
+
+            font-size: 12px;
+        }
+
+        .login-terminal {
+            margin-top: 22px;
+
+            color: #397b52;
+
+            font-size: 10px;
+
+            letter-spacing: 1px;
+        }
+
+
+        /* =========================
+           MOBILE LOGIN
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            .login-box {
+                padding: 28px 20px;
+            }
+
+            .login-logo {
+                font-size: 45px;
+            }
+
+            .login-box h1 {
+                font-size: 25px;
+            }
+
+            .password-hint {
+                font-size: 10px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- ================= PASSWORD SCREEN ================= -->
 
-<div id="loginScreen">
-  <div class="login-box">
+    <!-- =================================================
+         LOGIN SCREEN
+    ================================================== -->
 
-    <div class="login-logo">🔐</div>
+    <div id="loginScreen">
 
-    <h1>RESHMA OS</h1>
+        <div class="login-box">
 
-    <p>Birthday Edition</p>
-    <p>Enter password to continue 🤍</p>
+            <div class="login-logo">🎂</div>
 
-    <input
-      id="sitePassword"
-      type="password"
-      placeholder="Enter password"
-      autocomplete="off"
+            <h1>RESHMA OS</h1>
+
+            <div class="login-subtitle">
+                Birthday Edition v19.0
+            </div>
+
+            <label class="login-label">
+                ENTER PASSWORD
+            </label>
+
+            <input
+                type="password"
+                id="passwordInput"
+                placeholder="Enter password"
+                autocomplete="off"
+                onkeydown="if(event.key === 'Enter') checkPassword()"
+            >
+
+            <div class="password-hint">
+                💡 Hint: Abishek's first 3 letters +
+                Reshma's last 2 letters
+            </div>
+
+            <button id="loginButton" onclick="checkPassword()">
+                ACCESS BIRTHDAY OS
+            </button>
+
+            <div id="loginError"></div>
+
+            <div class="login-terminal">
+                birthday@os:~$ waiting for authentication...
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         BOOT SCREEN
+    ================================================== -->
+
+    <div id="bootScreen">
+
+        <div class="boot-box">
+
+            <div class="logo">🎂</div>
+
+            <h1>RESHMA OS</h1>
+
+            <p>Birthday Edition v19.0</p>
+
+            <div class="progress">
+                <span id="progressBar"></span>
+            </div>
+
+            <p id="bootText">
+                Initializing birthday system...
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         DESKTOP
+    ================================================== -->
+
+    <div id="desktop" class="hidden">
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <span>
+                🎂 RESHMA OS
+            </span>
+
+            <span id="clock">
+                00:00:00
+            </span>
+
+        </header>
+
+
+        <!-- MAIN AREA -->
+
+        <main class="desktop-area">
+
+            <!-- WELCOME -->
+
+            <section class="welcome">
+
+                <p class="small">
+                    SYSTEM MESSAGE
+                </p>
+
+                <h1>
+                    Happy 19th Birthday, Reshma! 🎉
+                </h1>
+
+                <p>
+                    From Abishek 💙 — un friend-kaga oru
+                    small digital surprise.
+                </p>
+
+
+                <!-- COUNTDOWN -->
+
+                <div class="countdown-card">
+
+                    <div class="count-label">
+                        BIRTHDAY COUNTDOWN
+                    </div>
+
+                    <div id="countdown">
+                        Loading...
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 APPLICATIONS
+            ================================================== -->
+
+            <div class="icons">
+
+                <button
+                    class="app"
+                    onclick="openApp('memories')"
+                >
+                    📸
+                    <b>Memories</b>
+                </button>
+
+
+                <button
+                    class="app"
+                    onclick="openApp('message')"
+                >
+                    💌
+                    <b>Birthday Message</b>
+                </button>
+
+
+                <button
+                    class="app"
+                    onclick="openApp('surprise')"
+                >
+                    🎁
+                    <b>Surprise</b>
+                </button>
+
+
+                <button
+                    class="app"
+                    onclick="openApp('terminal')"
+                >
+                    💻
+                    <b>Terminal</b>
+                </button>
+
+
+                <button
+                    class="app"
+                    onclick="openApp('music')"
+                >
+                    🎵
+                    <b>Birthday Music</b>
+                </button>
+
+
+                <button
+                    class="app"
+                    onclick="openApp('about')"
+                >
+                    🎂
+                    <b>Birthday Info</b>
+                </button>
+
+            </div>
+
+        </main>
+
+
+        <!-- =================================================
+             DOCK
+        ================================================== -->
+
+        <footer class="dock">
+
+            <button onclick="openApp('memories')">
+                📸
+            </button>
+
+            <button onclick="openApp('message')">
+                💌
+            </button>
+
+            <button onclick="openApp('surprise')">
+                🎁
+            </button>
+
+            <button onclick="openApp('music')">
+                🎵
+            </button>
+
+            <button onclick="openApp('terminal')">
+                💻
+            </button>
+
+        </footer>
+
+    </div>
+
+
+    <!-- =================================================
+         APP WINDOW
+    ================================================== -->
+
+    <div
+        id="overlay"
+        class="hidden"
+        onclick="closeOutside(event)"
     >
 
-    <button id="loginButton" onclick="loginSite()">
-      LOGIN
-    </button>
+        <div class="window">
 
-    <p id="loginError"></p>
+            <div class="window-head">
 
-  </div>
-</div>
+                <span id="windowTitle">
+                    App
+                </span>
 
+                <button onclick="closeApp()">
+                    ✕
+                </button>
 
-<!-- ================= BOOT SCREEN ================= -->
+            </div>
 
-<div id="bootScreen">
+            <div id="windowContent"></div>
 
-  <div class="boot-box">
-
-    <div class="logo">🎂</div>
-
-    <h1>RESHMA OS</h1>
-
-    <p>Birthday Edition v19.0</p>
-
-    <div class="progress">
-      <span id="progressBar"></span>
-    </div>
-
-    <p id="bootText">
-      Initializing birthday system...
-    </p>
-
-  </div>
-
-</div>
-
-
-<!-- ================= DESKTOP ================= -->
-
-<div id="desktop" class="hidden">
-
-  <header class="topbar">
-
-    <span>🎂 RESHMA OS</span>
-
-    <span id="clock"></span>
-
-  </header>
-
-
-  <main class="desktop-area">
-
-    <section class="welcome">
-
-      <p class="small">
-        SYSTEM MESSAGE
-      </p>
-
-      <h1>
-        Happy 19th Birthday, Reshma! 🎉
-      </h1>
-
-      <p>
-        From Abishek 💙 — un friend-kaga oru small digital surprise.
-      </p>
-
-
-      <div class="countdown-card">
-
-        <div class="count-label">
-          BIRTHDAY COUNTDOWN
         </div>
 
-        <div id="countdown">
-          Loading...
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ================= APP ICONS ================= -->
-
-    <div class="icons">
-
-      <button class="app"
-              onclick="openApp('memories')">
-        📸
-        <b>Memories</b>
-      </button>
-
-
-      <button class="app"
-              onclick="openApp('message')">
-        💌
-        <b>Birthday Message</b>
-      </button>
-
-
-      <button class="app"
-              onclick="openApp('surprise')">
-        🎁
-        <b>Surprise</b>
-      </button>
-
-
-      <!-- MUSIC BOX -->
-
-      <button class="app"
-              onclick="openMusicBox()">
-        🎵
-        <b>Music Box</b>
-      </button>
-
-
-      <button class="app"
-              onclick="openApp('terminal')">
-        💻
-        <b>Terminal</b>
-      </button>
-
-
-      <button class="app"
-              onclick="openApp('about')">
-        🎂
-        <b>Birthday Info</b>
-      </button>
-
     </div>
 
-  </main>
 
+    <!-- =================================================
+         LOGIN SCRIPT
+    ================================================== -->
 
-  <!-- ================= DOCK ================= -->
+    <script>
 
-  <footer class="dock">
+        const sitePassword = "abima";
 
-    <button onclick="openApp('memories')">
-      📸
-    </button>
 
-    <button onclick="openApp('message')">
-      💌
-    </button>
+        function checkPassword() {
 
-    <button onclick="openApp('surprise')">
-      🎁
-    </button>
+            const input =
+                document.getElementById("passwordInput");
 
-    <button onclick="openMusicBox()">
-      🎵
-    </button>
+            const error =
+                document.getElementById("loginError");
 
-    <button onclick="openApp('terminal')">
-      💻
-    </button>
+            const login =
+                document.getElementById("loginScreen");
 
-  </footer>
+            const value =
+                input.value.trim().toLowerCase();
 
-</div>
 
+            if (value === sitePassword) {
 
-<!-- ================= NORMAL APP WINDOW ================= -->
+                error.textContent = "";
 
-<div id="overlay"
-     class="hidden"
-     onclick="closeOutside(event)">
+                login.style.display = "none";
 
-  <div class="window">
+                sessionStorage.setItem(
+                    "birthdayOSUnlocked",
+                    "true"
+                );
 
-    <div class="window-head">
+            } else {
 
-      <span id="windowTitle">
-        App
-      </span>
+                error.textContent =
+                    "❌ Incorrect password";
 
-      <button onclick="closeApp()">
-        ✕
-      </button>
+                input.value = "";
 
-    </div>
+                input.focus();
 
-    <div id="windowContent"></div>
+            }
 
-  </div>
+        }
 
-</div>
 
+        /* Keep login while refreshing the page */
 
-<!-- ================= MUSIC BOX ================= -->
+        window.addEventListener("DOMContentLoaded", () => {
 
-<div id="musicBox">
+            const login =
+                document.getElementById("loginScreen");
 
-  <div class="music-window">
+            const unlocked =
+                sessionStorage.getItem(
+                    "birthdayOSUnlocked"
+                );
 
-    <button class="music-close"
-            onclick="closeMusicBox()">
-      ✕
-    </button>
+            if (unlocked === "true") {
+                login.style.display = "none";
+            }
 
-    <div class="music-icon">
-      🎵
-    </div>
+        });
 
-    <h2>
-      Music Box
-    </h2>
+    </script>
 
-    <p>
-      A little song for you, Reshma 🤍
-    </p>
 
-    <audio id="birthdayAudio"
-           controls
-           preload="metadata">
+    <!-- MAIN JAVASCRIPT -->
 
-      <source
-        src="music/birthday-song.mp4"
-        type="audio/mp4">
+    <script src="script.js"></script>
 
-      Your browser does not support audio.
-
-    </audio>
-
-    <p>
-      🎶 Enjoy the song 🤍
-    </p>
-
-  </div>
-
-</div>
-
-
-<!-- ================= EXISTING SCRIPT ================= -->
-
-<script src="script.js"></script>
-
-
-<!-- ================= LOGIN + MUSIC FUNCTIONS ================= -->
-
-<script>
-
-function loginSite() {
-
-  const password =
-    document.getElementById("sitePassword").value;
-
-  const error =
-    document.getElementById("loginError");
-
-  if (password === "abima") {
-
-    document.getElementById("loginScreen").style.display = "none";
-
-    error.textContent = "";
-
-  } else {
-
-    error.textContent =
-      "❌ Wrong password";
-
-  }
-
-}
-
-
-function openMusicBox() {
-
-  document.getElementById("musicBox").style.display = "flex";
-
-}
-
-
-function closeMusicBox() {
-
-  const audio =
-    document.getElementById("birthdayAudio");
-
-  audio.pause();
-
-  audio.currentTime = 0;
-
-  document.getElementById("musicBox").style.display = "none";
-
-}
-
-
-/* Enter key password login */
-
-document
-  .getElementById("sitePassword")
-  .addEventListener("keydown", function(event) {
-
-    if (event.key === "Enter") {
-      loginSite();
-    }
-
-  });
-
-</script>
 
 </body>
+
 </html>
